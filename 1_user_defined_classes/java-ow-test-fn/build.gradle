@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'com.mattwelke'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 17
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.mattwelke.Function'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
